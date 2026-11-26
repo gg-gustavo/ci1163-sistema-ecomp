@@ -1,0 +1,95 @@
+{% extends "base.html" %}
+{% block content %}
+<p><a class="btn" href="{{ url_for('projetos.index') }}">← Voltar</a></p>
+<h2>Projeto #{{ projeto.id }}</h2>
+
+<table>
+  <tbody>
+    <tr><th>Cliente</th><td>{{ projeto.cliente.nome }}</td></tr>
+    <tr><th>Início</th><td>{{ projeto.data_inicio.strftime('%d/%m/%Y') }}</td></tr>
+    <tr><th>Prazo de entrega</th><td>{{ projeto.prazo_entrega.strftime('%d/%m/%Y') }}</td></tr>
+    <tr><th>Descrição</th><td>{{ projeto.descricao or '' }}</td></tr>
+    <tr>
+      <th>Contrato</th>
+      <td>{{ projeto.contrato_pdf or 'Sem contrato importado' }}</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Etapas</h3>
+{% if projeto.etapas %}
+<table>
+  <thead>
+    <tr><th>Cronograma</th><th>Status</th><th>Atualizar</th></tr>
+  </thead>
+  <tbody>
+    {% for etapa in projeto.etapas %}
+    <tr>
+      <td>
+        <form method="post" id="etapa-{{ etapa.id }}"
+              action="{{ url_for('projetos.atualizar_cronograma_etapa', projeto_id=projeto.id, etapa_id=etapa.id) }}">
+          <input type="text" name="cronograma" value="{{ etapa.cronograma or '' }}" required>
+        </form>
+      </td>
+      <td>
+        <select name="status" form="etapa-{{ etapa.id }}">
+          {% for valor in ['planejada', 'em andamento', 'concluída'] %}
+            <option value="{{ valor }}" {% if etapa.status == valor %}selected{% endif %}>{{ valor }}</option>
+          {% endfor %}
+        </select>
+      </td>
+      <td><button class="btn" type="submit" form="etapa-{{ etapa.id }}">Salvar</button></td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% else %}
+<p>Nenhuma etapa cadastrada.</p>
+{% endif %}
+
+<h4>Adicionar etapa</h4>
+<form method="post" action="{{ url_for('projetos.cadastrar_etapas', projeto_id=projeto.id) }}">
+  <label for="cronograma">Cronograma *</label>
+  <input type="text" id="cronograma" name="cronograma" required>
+  <label for="status">Status</label>
+  <select id="status" name="status">
+    <option value="planejada">planejada</option>
+    <option value="em andamento">em andamento</option>
+    <option value="concluída">concluída</option>
+  </select>
+  <p><button class="btn" type="submit">Adicionar etapa</button></p>
+</form>
+
+<h3>Desenvolvedores</h3>
+{% if projeto.desenvolvedores %}
+<table>
+  <thead>
+    <tr><th>Nome</th><th>Papel</th></tr>
+  </thead>
+  <tbody>
+    {% for dev in projeto.desenvolvedores %}
+    <tr>
+      <td>{{ dev.membro.nome }}</td>
+      <td>{{ dev.papel or '' }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% else %}
+<p>Nenhum desenvolvedor associado.</p>
+{% endif %}
+
+<h4>Adicionar desenvolvedor</h4>
+<form method="post" action="{{ url_for('projetos.adicionar_desenvolvedor', projeto_id=projeto.id) }}">
+  <label for="membro_id">Membro *</label>
+  <select id="membro_id" name="membro_id" required>
+    <option value="">— Selecione —</option>
+    {% for membro in membros %}
+      <option value="{{ membro.id }}">{{ membro.nome }}</option>
+    {% endfor %}
+  </select>
+  <label for="papel">Papel *</label>
+  <input type="text" id="papel" name="papel" required>
+  <p><button class="btn" type="submit">Adicionar desenvolvedor</button></p>
+</form>
+{% endblock %}

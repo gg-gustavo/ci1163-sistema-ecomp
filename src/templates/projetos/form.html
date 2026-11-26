@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Cadastrar Projeto</h2>
+
+<form method="post" enctype="multipart/form-data" action="{{ url_for('projetos.nova') }}">
+  <label for="cliente_id">Cliente *</label>
+  <select id="cliente_id" name="cliente_id" required>
+    <option value="">— Selecione —</option>
+    {% for cliente in clientes %}
+      <option value="{{ cliente.id }}"
+        {% if form.get('cliente_id')|string == cliente.id|string %}selected{% endif %}>
+        {{ cliente.nome }}
+      </option>
+    {% endfor %}
+  </select>
+
+  <label for="data_inicio">Data de início *</label>
+  <input type="date" id="data_inicio" name="data_inicio" required value="{{ form.get('data_inicio', '') }}">
+
+  <label for="prazo_entrega">Prazo de entrega *</label>
+  <input type="date" id="prazo_entrega" name="prazo_entrega" required value="{{ form.get('prazo_entrega', '') }}">
+
+  <label for="descricao">Descrição *</label>
+  <textarea id="descricao" name="descricao" rows="4" required>{{ form.get('descricao', '') }}</textarea>
+
+  <label for="contrato_pdf">Contrato (PDF)</label>
+  <input type="file" id="contrato_pdf" name="contrato_pdf" accept="application/pdf">
+
+  <p><button class="btn" type="submit">Salvar</button>
+     <a class="btn" href="{{ url_for('projetos.index') }}">Cancelar</a></p>
+</form>
+{% endblock %}
