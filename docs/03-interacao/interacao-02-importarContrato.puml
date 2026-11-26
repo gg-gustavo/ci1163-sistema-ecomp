@@ -1,0 +1,23 @@
+@startuml
+title 02 — importarContrato(projeto, arquivoPdf)
+autonumber
+participant ":Tela" as Tela
+participant ":ProjetosController" as Controller
+participant ":Projeto" as Projeto
+participant ":Repositorio" as Repo
+
+Tela -> Controller: importarContrato(projeto, arquivoPdf)
+Controller -> Repo: buscarProjeto(projeto)
+Repo --> Controller: Projeto
+alt arquivoPdf informado e PDF válido
+  Controller -> Projeto: definirContrato(arquivoPdf)
+  Projeto --> Controller: ok
+  Controller -> Repo: salvar(Projeto)
+  Repo --> Controller: ok
+  Controller --> Tela: ok
+else arquivoPdf ausente
+  Controller --> Tela: ok (sem contrato)
+else arquivo inválido
+  Controller --> Tela: erro
+end
+@enduml

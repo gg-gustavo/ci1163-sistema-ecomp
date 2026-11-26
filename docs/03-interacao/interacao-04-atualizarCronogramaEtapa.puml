@@ -1,0 +1,22 @@
+@startuml
+title 04 — atualizarCronogramaEtapa(etapa, cronograma, status)
+autonumber
+participant ":Tela" as Tela
+participant ":ProjetosController" as Controller
+participant ":Etapa" as Etapa
+participant ":Repositorio" as Repo
+
+Tela -> Controller: atualizarCronogramaEtapa(etapa, cronograma, status)
+Controller -> Repo: buscarEtapa(etapa)
+Repo --> Controller: Etapa
+Controller -> Controller: validar(cronograma, status)
+alt cronograma ou status ausente
+  Controller --> Tela: erro
+else dados válidos
+  Controller -> Etapa: atualizar(cronograma, status)
+  Etapa --> Controller: ok
+  Controller -> Repo: salvar(Etapa)
+  Repo --> Controller: ok
+  Controller --> Tela: ok
+end
+@enduml

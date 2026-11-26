@@ -1,0 +1,25 @@
+@startuml
+title 08 — cadastrarItemFiscal(projeto, tipo, data, valor)
+autonumber
+participant ":Tela" as Tela
+participant ":FiscalController" as Controller
+participant ":Projeto" as Projeto
+participant ":ItemFiscal" as ItemFiscal
+participant ":Repositorio" as Repo
+
+Tela -> Controller: cadastrarItemFiscal(projeto, tipo, data, valor)
+Controller -> Controller: validar(tipo, data, valor)
+alt informação obrigatória ausente ou inválida
+  Controller --> Tela: erro
+else dados válidos
+  Controller -> Repo: buscarProjeto(projeto)
+  Repo --> Controller: Projeto
+  Controller -> ItemFiscal: criar(Projeto, tipo, data, valor)
+  ItemFiscal --> Controller: ItemFiscal
+  Controller -> Projeto: adicionar(ItemFiscal)
+  Projeto --> Controller: ok
+  Controller -> Repo: salvar(ItemFiscal)
+  Repo --> Controller: ok
+  Controller --> Tela: ok
+end
+@enduml

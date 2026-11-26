@@ -1,0 +1,34 @@
+@startuml
+title 06 — cadastrarAtividade(dadosAtividade)
+autonumber
+participant ":Tela" as Tela
+participant ":AtividadesController" as Controller
+participant ":Atividade" as Atividade
+participant ":Membro" as Membro
+participant ":Participante" as Participante
+participant ":Repositorio" as Repo
+
+Tela -> Controller: cadastrarAtividade(dadosAtividade)
+Controller -> Controller: validarObrigatorios(dadosAtividade)
+alt campo obrigatório ausente
+  Controller --> Tela: erro
+else dados válidos
+  Controller -> Repo: buscarMembros(dadosAtividade.participantes)
+  Repo --> Controller: Membro*
+  alt há participante não cadastrado
+    Controller --> Tela: erro
+  else membros válidos
+    Controller -> Atividade: criar(dadosAtividade)
+    Atividade --> Controller: Atividade
+    loop cada Membro selecionado
+      Controller -> Participante: criar(Atividade, Membro)
+      Participante --> Controller: Participante
+      Controller -> Atividade: adicionar(Participante)
+      Atividade --> Controller: ok
+    end
+    Controller -> Repo: salvar(Atividade)
+    Repo --> Controller: ok
+    Controller --> Tela: ok
+  end
+end
+@enduml
