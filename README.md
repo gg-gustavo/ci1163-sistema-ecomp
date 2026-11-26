@@ -1,6 +1,6 @@
 # CI1163 — Design de Software — Sistema Ecomp
 
-Projeto e implementação do sistema de relatórios da Ecomp (Primeiro Trabalho Prático — Design de Software, CI1163, 2024-2, UFPR).
+Projeto e implementação do sistema de relatórios da Ecomp (Primeiro Trabalho Prático — Design de Software, CI1163, 2026-2, UFPR).
 
 ## Equipe (5 integrantes — autorização do professor)
 
