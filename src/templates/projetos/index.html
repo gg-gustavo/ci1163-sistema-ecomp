@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Projetos</h2>
+<p><a class="btn" href="{{ url_for('projetos.nova') }}">Cadastrar Projeto</a></p>
+
+{% if projetos %}
+<table>
+  <thead>
+    <tr>
+      <th>Cliente</th>
+      <th>Início</th>
+      <th>Prazo de entrega</th>
+      <th>Descrição</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for projeto in projetos %}
+    <tr>
+      <td>{{ projeto.cliente.nome }}</td>
+      <td>{{ projeto.data_inicio.strftime('%d/%m/%Y') }}</td>
+      <td>{{ projeto.prazo_entrega.strftime('%d/%m/%Y') }}</td>
+      <td>{{ projeto.descricao or '' }}</td>
+      <td><a href="{{ url_for('projetos.detalhe', projeto_id=projeto.id) }}">Detalhes</a></td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% else %}
+<p>Nenhum projeto cadastrado.</p>
+{% endif %}
+{% endblock %}
