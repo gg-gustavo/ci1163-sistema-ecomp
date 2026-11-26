@@ -1,0 +1,16 @@
+@startuml
+actor "Direção de Projetos" as Ator
+boundary ":Sistema" as Sistema
+
+Ator -> Sistema: Selecionar projeto
+Sistema --> Ator: Exibir tela de etapas do projeto
+Ator -> Sistema: cadastrarEtapasProjeto(projeto, etapas)
+Sistema --> Ator: Exibir etapas cadastradas
+Ator -> Sistema: atualizarCronogramaEtapa(etapa, cronograma, status)
+Sistema --> Ator: Exibir cronograma e status atualizados
+Sistema --> Ator: Exibir tela inicial do projeto
+
+note over Sistema
+  ECU002: projeto previamente criado; dados obrigatórios ausentes geram aviso e retorno ao cadastro.
+end note
+@enduml

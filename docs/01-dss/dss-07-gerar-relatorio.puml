@@ -1,0 +1,13 @@
+@startuml
+actor "Usuário (membro)" as Ator
+boundary ":Sistema" as Sistema
+
+Ator -> Sistema: Solicitar geração de relatório
+Sistema --> Ator: Exibir opções de relatório
+Ator -> Sistema: gerarRelatorio(tipo, filtros)
+Sistema --> Ator: Disponibilizar relatório em PDF
+
+note over Sistema
+  ECU007: relatório de atividades ou prestação de contas conforme tipo e filtros informados.
+end note
+@enduml

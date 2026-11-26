@@ -1,0 +1,21 @@
+@startuml
+actor "Direção de Atividades" as Ator
+boundary ":Sistema" as Sistema
+
+Ator -> Sistema: Solicitar cadastro de atividade
+Sistema --> Ator: Exibir tela de cadastro de atividade
+Ator -> Sistema: cadastrarAtividade(dadosAtividade)
+Sistema --> Ator: Exibir mensagem de sucesso
+
+ref over Ator, Sistema
+  Ponto de extensão (ECU004): Desenvolvedor registra
+  as horas da atividade a ele vinculada.
+end ref
+Ator -> Sistema: registrarHorasAtividade(atividade, membro, horas)
+Sistema --> Ator: Exibir mensagem de sucesso
+
+note over Sistema
+  ECU004: participantes selecionados devem ser membros cadastrados.
+  Campo obrigatório ausente: alertar o erro.
+end note
+@enduml

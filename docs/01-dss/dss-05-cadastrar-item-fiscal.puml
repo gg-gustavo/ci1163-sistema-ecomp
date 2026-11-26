@@ -1,0 +1,13 @@
+@startuml
+actor "Adm-Fin" as Ator
+boundary ":Sistema" as Sistema
+
+Ator -> Sistema: Solicitar cadastro de nota fiscal ou recibo
+Sistema --> Ator: Exibir formulário e projetos disponíveis
+Ator -> Sistema: cadastrarItemFiscal(projeto, tipo, data, valor)
+Sistema --> Ator: Exibir mensagem de sucesso
+
+note over Sistema
+  ECU005: informação obrigatória ausente gera alerta.
+end note
+@enduml
