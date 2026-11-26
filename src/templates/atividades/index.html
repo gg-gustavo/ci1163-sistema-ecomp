@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Atividades</h2>
+<p><a class="btn" href="{{ url_for('atividades.nova') }}">Nova atividade</a></p>
+
+{% if atividades %}
+<table>
+  <thead>
+    <tr>
+      <th>Nome</th>
+      <th>Duração</th>
+      <th>Local</th>
+      <th>Participantes</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for atividade in atividades %}
+    <tr>
+      <td>{{ atividade.nome }}</td>
+      <td>{{ atividade.duracao }}</td>
+      <td>{{ atividade.local }}</td>
+      <td>{{ atividade.participantes|length }}</td>
+      <td><a href="{{ url_for('atividades.detalhe', atividade_id=atividade.id) }}">Detalhes</a></td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% else %}
+<p>Nenhuma atividade cadastrada.</p>
+{% endif %}
+{% endblock %}

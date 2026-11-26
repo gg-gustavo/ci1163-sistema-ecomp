@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Relatórios</h2>
+
+<form method="post" action="{{ url_for('relatorios.gerar') }}">
+  <label for="tipo">Tipo de relatório *</label>
+  <select id="tipo" name="tipo" required>
+    <option value="atividades">Atividades</option>
+    <option value="prestacao_contas">Prestação de contas</option>
+  </select>
+
+  <label for="data_inicio">Período — início (opcional)</label>
+  <input id="data_inicio" name="data_inicio" type="date">
+
+  <label for="data_fim">Período — fim (opcional)</label>
+  <input id="data_fim" name="data_fim" type="date">
+
+  <p><button class="btn" type="submit">Gerar relatório</button></p>
+</form>
+
+<h3>Relatórios anteriores</h3>
+{% if relatorios %}
+<table>
+  <thead><tr><th>#</th><th>Tipo</th><th>Gerado em</th><th></th></tr></thead>
+  <tbody>
+    {% for relatorio in relatorios %}
+    <tr>
+      <td>{{ relatorio.id }}</td>
+      <td>{{ 'Atividades' if relatorio.tipo == 'atividades' else 'Prestação de contas' }}</td>
+      <td>{{ relatorio.gerado_em.strftime('%d/%m/%Y %H:%M') if relatorio.gerado_em else '—' }}</td>
+      <td><a href="{{ url_for('relatorios.visualizar', relatorio_id=relatorio.id) }}">Ver</a></td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% else %}
+<p>Nenhum relatório gerado.</p>
+{% endif %}
+{% endblock %}
