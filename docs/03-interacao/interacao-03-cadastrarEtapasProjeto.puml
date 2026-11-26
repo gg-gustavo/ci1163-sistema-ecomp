@@ -1,0 +1,27 @@
+@startuml
+title 03 — cadastrarEtapasProjeto(projeto, etapas)
+autonumber
+participant ":Tela" as Tela
+participant ":ProjetosController" as Controller
+participant ":Projeto" as Projeto
+participant ":Etapa" as Etapa
+participant ":Repositorio" as Repo
+
+Tela -> Controller: cadastrarEtapasProjeto(projeto, etapas)
+Controller -> Controller: validarEtapas(etapas)
+alt etapas ou campos obrigatórios ausentes
+  Controller --> Tela: erro
+else etapas válidas
+  Controller -> Repo: buscarProjeto(projeto)
+  Repo --> Controller: Projeto
+  loop cada etapa
+    Controller -> Etapa: criar(cronograma, status)
+    Etapa --> Controller: Etapa
+    Controller -> Projeto: adicionar(Etapa)
+    Projeto --> Controller: ok
+  end
+  Controller -> Repo: salvar(Projeto)
+  Repo --> Controller: ok
+  Controller --> Tela: ok
+end
+@enduml

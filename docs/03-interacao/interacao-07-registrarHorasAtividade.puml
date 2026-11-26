@@ -1,0 +1,28 @@
+@startuml
+title 07 — registrarHorasAtividade(atividade, membro, horas)
+autonumber
+participant ":Tela" as Tela
+participant ":AtividadesController" as Controller
+participant ":Atividade" as Atividade
+participant ":Membro" as Membro
+participant ":RegistroHoras" as RegistroHoras
+participant ":Repositorio" as Repo
+
+Tela -> Controller: registrarHorasAtividade(atividade, membro, horas)
+Controller -> Repo: buscarAtividade(atividade)
+Repo --> Controller: Atividade
+Controller -> Repo: buscarMembro(membro)
+Repo --> Controller: Membro
+Controller -> Controller: validarHoras(horas)
+alt horas inválidas ou vínculo ausente
+  Controller --> Tela: erro
+else dados válidos
+  Controller -> RegistroHoras: criar(Atividade, Membro, horas)
+  RegistroHoras --> Controller: RegistroHoras
+  Controller -> Atividade: adicionar(RegistroHoras)
+  Atividade --> Controller: ok
+  Controller -> Repo: salvar(RegistroHoras)
+  Repo --> Controller: ok
+  Controller --> Tela: ok
+end
+@enduml

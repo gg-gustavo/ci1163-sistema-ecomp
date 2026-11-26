@@ -1,0 +1,22 @@
+@startuml
+title 10 — gerarRelatorio(tipo, filtros)
+autonumber
+participant ":Tela" as Tela
+participant ":RelatoriosController" as Controller
+participant ":Relatorio" as Relatorio
+participant ":Repositorio" as Repo
+
+Tela -> Controller: gerarRelatorio(tipo, filtros)
+Controller -> Controller: validar(tipo, filtros)
+alt tipo ou filtros inválidos
+  Controller --> Tela: erro
+else parâmetros válidos
+  Controller -> Repo: consultarDados(tipo, filtros)
+  Repo --> Controller: dados integrados
+  Controller -> Relatorio: criar(tipo, filtros)
+  Relatorio --> Controller: Relatorio
+  Controller -> Repo: salvar(Relatorio)
+  Repo --> Controller: ok
+  Controller --> Tela: ok (relatório gerado)
+end
+@enduml

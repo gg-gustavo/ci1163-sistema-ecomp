@@ -1,0 +1,23 @@
+@startuml
+title 01 — cadastrarProjeto(dadosProjeto)
+autonumber
+participant ":Tela" as Tela
+participant ":ProjetosController" as Controller
+participant ":Cliente" as Cliente
+participant ":Projeto" as Projeto
+participant ":Repositorio" as Repo
+
+Tela -> Controller: cadastrarProjeto(dadosProjeto)
+Controller -> Controller: validarDados(dadosProjeto)
+alt dados obrigatórios ausentes
+  Controller --> Tela: erro
+else dados válidos
+  Controller -> Repo: buscarCliente(dadosProjeto.cliente_id)
+  Repo --> Controller: Cliente
+  Controller -> Projeto: criar(dadosProjeto, Cliente)
+  Projeto --> Controller: Projeto
+  Controller -> Repo: salvar(Projeto)
+  Repo --> Controller: ok
+  Controller --> Tela: ok
+end
+@enduml

@@ -1,0 +1,31 @@
+@startuml
+title 09 — cadastrarMembro(dadosMembro)
+autonumber
+participant ":Tela" as Tela
+participant ":MembrosController" as Controller
+participant ":Membro" as Membro
+participant ":Repositorio" as Repo
+
+Tela -> Controller: cadastrarMembro(dadosMembro)
+Controller -> Controller: validarObrigatorios(dadosMembro)
+alt campo obrigatório ausente
+  Controller --> Tela: erro
+else campos preenchidos
+  Controller -> Controller: validarCPF(dadosMembro.cpf)
+  alt CPF inválido
+    Controller --> Tela: erro
+  else CPF válido
+    Controller -> Repo: buscarMembroPorCPF(dadosMembro.cpf)
+    Repo --> Controller: ausente ou existente
+    alt CPF já cadastrado
+      Controller --> Tela: erro
+    else CPF disponível
+      Controller -> Membro: criar(dadosMembro)
+      Membro --> Controller: Membro
+      Controller -> Repo: salvar(Membro)
+      Repo --> Controller: ok
+      Controller --> Tela: ok
+    end
+  end
+end
+@enduml

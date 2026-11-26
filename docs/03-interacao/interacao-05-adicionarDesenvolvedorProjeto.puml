@@ -1,0 +1,27 @@
+@startuml
+title 05 — adicionarDesenvolvedorProjeto(projeto, desenvolvedor, papel)
+autonumber
+participant ":Tela" as Tela
+participant ":ProjetosController" as Controller
+participant ":Projeto" as Projeto
+participant ":Membro" as Membro
+participant ":Desenvolvedor" as Desenvolvedor
+participant ":Repositorio" as Repo
+
+Tela -> Controller: adicionarDesenvolvedorProjeto(projeto, desenvolvedor, papel)
+Controller -> Repo: buscarProjeto(projeto)
+Repo --> Controller: Projeto
+Controller -> Repo: buscarMembro(desenvolvedor)
+Repo --> Controller: Membro
+alt desenvolvedor não selecionado ou inexistente
+  Controller --> Tela: erro
+else desenvolvedor válido
+  Controller -> Desenvolvedor: criar(Membro, Projeto, papel)
+  Desenvolvedor --> Controller: Desenvolvedor
+  Controller -> Projeto: adicionar(Desenvolvedor)
+  Projeto --> Controller: ok
+  Controller -> Repo: salvar(Desenvolvedor)
+  Repo --> Controller: ok
+  Controller --> Tela: ok
+end
+@enduml
