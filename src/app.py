@@ -16,6 +16,7 @@ BLUEPRINTS = [
 
 def create_app():
     app = Flask(__name__)
+    app.secret_key = "ecomp-ci1163-dev-key"
     base = os.path.dirname(os.path.abspath(__file__))
     app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///" + os.path.join(base, "ecomp.db")
     app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
