@@ -1,4 +1,4 @@
-# Contrato de Operação 01 — cadastrarProjeto
+# Contrato de Operação 01 - cadastrarProjeto
 
 Autor: Gustavo Gabriel Ripka (GRR20203935)
 
@@ -6,7 +6,7 @@ Autor: Gustavo Gabriel Ripka (GRR20203935)
 `cadastrarProjeto(dadosProjeto)`
 
 ## Referências cruzadas
-ECU001 — Cadastrar Projeto; DSS: [dss-01-cadastrar-projeto.puml](../01-dss/dss-01-cadastrar-projeto.puml).
+ECU001 - Cadastrar Projeto; DSS: [dss-01-cadastrar-projeto.puml](../01-dss/dss-01-cadastrar-projeto.puml).
 
 ## Pré-condições
 - O ator Direção de Projetos está autenticado no sistema.

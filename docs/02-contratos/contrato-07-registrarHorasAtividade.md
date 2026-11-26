@@ -1,4 +1,4 @@
-# Contrato de Operação 07 — registrarHorasAtividade
+# Contrato de Operação 07 - registrarHorasAtividade
 
 Autor: Arthur Barreto Godoi (GRR20224377)
 
@@ -6,7 +6,7 @@ Autor: Arthur Barreto Godoi (GRR20224377)
 `registrarHorasAtividade(atividade, membro, horas)`
 
 ## Referências cruzadas
-ECU004 (extensão); DSS: [dss-04-cadastrar-atividade.puml](../01-dss/dss-04-cadastrar-atividade.puml) — operação de extensão associada ao cadastro de atividade.
+ECU004 (extensão); DSS: [dss-04-cadastrar-atividade.puml](../01-dss/dss-04-cadastrar-atividade.puml) - operação de extensão associada ao cadastro de atividade.
 
 ## Pré-condições
 - O membro está autenticado no sistema e identifica um `Ecomper` cadastrado.

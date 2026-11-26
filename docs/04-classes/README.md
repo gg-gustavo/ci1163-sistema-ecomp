@@ -1,4 +1,4 @@
-# Diagrama de Classes — Visão de Projeto
+# Diagrama de Classes - Visão de Projeto
 
 O arquivo `diagrama-classes-projeto.puml` mostra a implementação organizada em quatro camadas: templates Jinja (UI), blueprints (Controle), modelos persistidos (Domínio) e acesso a dados (Persistência). Os atributos das entidades reproduzem os campos de `src/models.py`, incluindo chaves primárias e estrangeiras. `Ecomp` não aparece como classe de projeto: na implementação, a facade é o próprio app Flask.
 

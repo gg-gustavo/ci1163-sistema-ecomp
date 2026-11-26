@@ -1,4 +1,4 @@
-# Contrato de Operação 10 — gerarRelatorio
+# Contrato de Operação 10 - gerarRelatorio
 
 Autor: Gabriel Shigueo (GRR20221261)
 
@@ -6,7 +6,7 @@ Autor: Gabriel Shigueo (GRR20221261)
 `gerarRelatorio(tipo, filtros)`
 
 ## Referências cruzadas
-ECU007 — Gerar relatório; DSS: [dss-07-gerar-relatorio.puml](../01-dss/dss-07-gerar-relatorio.puml).
+ECU007 - Gerar relatório; DSS: [dss-07-gerar-relatorio.puml](../01-dss/dss-07-gerar-relatorio.puml).
 
 ## Pré-condições
 - O usuário está autenticado no sistema.

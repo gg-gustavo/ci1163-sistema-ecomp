@@ -1,4 +1,4 @@
-# Contrato de Operação 03 — cadastrarEtapasProjeto
+# Contrato de Operação 03 - cadastrarEtapasProjeto
 
 Autor: Pedro Henrique Gurski (GRR20224759)
 
@@ -6,7 +6,7 @@ Autor: Pedro Henrique Gurski (GRR20224759)
 `cadastrarEtapasProjeto(projeto, etapas)`
 
 ## Referências cruzadas
-ECU002 — Cadastrar etapas do desenvolvimento do Projeto; DSS: [dss-02-cadastrar-etapas.puml](../01-dss/dss-02-cadastrar-etapas.puml).
+ECU002 - Cadastrar etapas do desenvolvimento do Projeto; DSS: [dss-02-cadastrar-etapas.puml](../01-dss/dss-02-cadastrar-etapas.puml).
 
 ## Pré-condições
 - Direção de Projetos está autenticada.

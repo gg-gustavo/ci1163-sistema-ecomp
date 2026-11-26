@@ -1,6 +1,6 @@
-# Relatório — Primeiro Trabalho Prático de Design de Software
+# Relatório - Trabalho Prático de Design de Software
 
-**Disciplina:** Design de Software — CI1163 — **2026-2** — UFPR
+**Disciplina:** Design de Software - CI1163 - **2026-2** - UFPR
 **Tema:** Sistema Ecomp (relatório de atividades e prestação de contas da Ecomp)
 
 ## Equipe
@@ -19,11 +19,11 @@ Observação: a equipe foi composta por 5 integrantes conforme autorização do 
 
 | Artefato | Local | Pontos (enunciado) |
 |---|---|---|
-| 1. Diagramas de Sequência de Sistema | `docs/01-dss/` — 7 diagramas (um por ECU) | 10 |
-| 2. Contratos de Operação | `docs/02-contratos/` — 10 contratos (2 por integrante) | 10 |
-| 3. Diagramas de Interação | `docs/03-interacao/` — 10 diagramas (um por operação do sistema) | 30 |
-| 4. Diagrama de Classes — Visão de Projeto | `docs/04-classes/` | 20 |
-| 5. Implementação | `src/` — Flask + SQLite | 20 |
+| 1. Diagramas de Sequência de Sistema | `docs/01-dss/` - 7 diagramas (um por ECU) | 10 |
+| 2. Contratos de Operação | `docs/02-contratos/` - 10 contratos (2 por integrante) | 10 |
+| 3. Diagramas de Interação | `docs/03-interacao/` - 10 diagramas (um por operação do sistema) | 30 |
+| 4. Diagrama de Classes - Visão de Projeto | `docs/04-classes/` | 20 |
+| 5. Implementação | `src/` - Flask + SQLite | 20 |
 | 6. Verificação e Validação | `docs/06-verificacao-validacao.md` | 10 |
 
 Diagramas em PlantUML (fontes `.puml` versionados no repositório); renders em PNG no diretório `diagramas-render/` e incorporados ao PDF de entrega.
@@ -32,7 +32,7 @@ Diagramas em PlantUML (fontes `.puml` versionados no repositório); renders em P
 
 O trabalho foi executado no repositório aberto **github.com/gg-gustavo/ci1163-sistema-ecomp**, com fluxo de execução até a entrega:
 
-1. `docs/PLANO.md` como fonte única de nomes canônicos (10 operações do sistema, classes de domínio, arquitetura) — garante que DSS, contratos, diagramas de interação, classes e código falem a mesma língua.
+1. `docs/PLANO.md` como fonte única de nomes canônicos (10 operações do sistema, classes de domínio, arquitetura) - garante que DSS, contratos, diagramas de interação, classes e código falem a mesma língua.
 2. Issues #1–#7 como backlog dos artefatos.
 3. Uma branch por artefato/lane (`artefato/01-dss`, `artefato/02-contratos`, `artefato/03-interacao`, `artefato/04-classes`, `impl/projetos`, `impl/atividades-financas`), integradas por Pull Requests revisados.
 4. Reconciliação em `main`: validação integrada do software, verificação gráfica dos diagramas e fechamento das issues.
@@ -70,7 +70,7 @@ Como executar: `cd src && pip3 install -r requirements.txt && python3 app.py` �
 ## 5. Verificação e validação
 
 Resumo em `docs/06-verificacao-validacao.md`; destaques:
-- 18 diagramas compilados sem erro e inspecionados um a um — **nenhum elemento sobreposto**;
+- 18 diagramas compilados sem erro e inspecionados um a um - **nenhum elemento sobreposto**;
 - rastreabilidade completa 10/10: cada operação tem DSS, diagrama de interação, contrato e rota correspondente;
 - testes integrados fim a fim do software (incluindo fluxos alternativos dos ECUs) e testes por módulo (18 + 32 verificações);
 - ajustes aplicados após o V&V: ponto de extensão do ECU004 incluído no DSS, `secret_key` do app, dependência de pacote no diagrama de classes.

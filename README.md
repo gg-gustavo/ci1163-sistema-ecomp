@@ -1,8 +1,8 @@
-# CI1163 — Design de Software — Sistema Ecomp
+# CI1163 - Design de Software - Sistema Ecomp
 
-Projeto e implementação do sistema de relatórios da Ecomp (Primeiro Trabalho Prático — Design de Software, CI1163, 2026-2, UFPR).
+Projeto e implementação do sistema de relatórios da Ecomp (Trabalho Prático - Design de Software, CI1163, 2026-2, UFPR).
 
-## Equipe (5 integrantes — autorização do professor)
+## Equipe (5 integrantes - autorização do professor)
 
 | Integrante | GRR |
 |---|---|
@@ -19,7 +19,7 @@ Projeto e implementação do sistema de relatórios da Ecomp (Primeiro Trabalho 
 | 1 | Diagramas de Sequência de Sistema (DSS) | `docs/01-dss/` | 10 |
 | 2 | Contratos de Operação (2 por integrante = 10) | `docs/02-contratos/` | 10 |
 | 3 | Diagramas de Interação | `docs/03-interacao/` | 30 |
-| 4 | Diagrama de Classes — Visão de Projeto | `docs/04-classes/` | 20 |
+| 4 | Diagrama de Classes - Visão de Projeto | `docs/04-classes/` | 20 |
 | 5 | Implementação (Flask + SQLite) | `src/` | 20 |
 | 6 | Verificação e Validação dos Diagramas | `docs/06-verificacao-validacao.md` | 10 |
 

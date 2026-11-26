@@ -1,4 +1,4 @@
-# Contrato de Operação 08 — cadastrarItemFiscal
+# Contrato de Operação 08 - cadastrarItemFiscal
 
 Autor: Arthur Barreto Godoi (GRR20224377)
 
@@ -6,7 +6,7 @@ Autor: Arthur Barreto Godoi (GRR20224377)
 `cadastrarItemFiscal(projeto, tipo, data, valor)`
 
 ## Referências cruzadas
-ECU005 — Cadastrar notas fiscais e recibos; DSS: [dss-05-cadastrar-item-fiscal.puml](../01-dss/dss-05-cadastrar-item-fiscal.puml).
+ECU005 - Cadastrar notas fiscais e recibos; DSS: [dss-05-cadastrar-item-fiscal.puml](../01-dss/dss-05-cadastrar-item-fiscal.puml).
 
 ## Pré-condições
 - Um usuário membro de Adm-Fin está autenticado.

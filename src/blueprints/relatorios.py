@@ -38,7 +38,7 @@ def _montar_atividades(inicio, fim):
     horas_por_membro = {}
     horas_por_atividade = {}
     for registro in registros:
-        nome = registro.membro.nome if registro.membro else "—"
+        nome = registro.membro.nome if registro.membro else " - "
         horas_por_membro[nome] = horas_por_membro.get(nome, 0) + (registro.horas or 0)
         horas_por_atividade[registro.atividade_id] = (
             horas_por_atividade.get(registro.atividade_id, 0) + (registro.horas or 0)

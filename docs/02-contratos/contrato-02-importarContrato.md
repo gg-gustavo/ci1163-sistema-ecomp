@@ -1,4 +1,4 @@
-# Contrato de Operação 02 — importarContrato
+# Contrato de Operação 02 - importarContrato
 
 Autor: Gustavo Gabriel Ripka (GRR20203935)
 
@@ -6,7 +6,7 @@ Autor: Gustavo Gabriel Ripka (GRR20203935)
 `importarContrato(projeto, arquivoPdf)`
 
 ## Referências cruzadas
-ECU001 — Cadastrar Projeto; DSS: [dss-01-cadastrar-projeto.puml](../01-dss/dss-01-cadastrar-projeto.puml).
+ECU001 - Cadastrar Projeto; DSS: [dss-01-cadastrar-projeto.puml](../01-dss/dss-01-cadastrar-projeto.puml).
 
 ## Pré-condições
 - O ator Direção de Projetos está autenticado no sistema.

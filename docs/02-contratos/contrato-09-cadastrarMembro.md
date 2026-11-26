@@ -1,4 +1,4 @@
-# Contrato de Operação 09 — cadastrarMembro
+# Contrato de Operação 09 - cadastrarMembro
 
 Autor: Gabriel Shigueo (GRR20221261)
 
@@ -6,7 +6,7 @@ Autor: Gabriel Shigueo (GRR20221261)
 `cadastrarMembro(dadosMembro)`
 
 ## Referências cruzadas
-ECU006 — Cadastrar membro da Ecomp; DSS: [dss-06-cadastrar-membro.puml](../01-dss/dss-06-cadastrar-membro.puml).
+ECU006 - Cadastrar membro da Ecomp; DSS: [dss-06-cadastrar-membro.puml](../01-dss/dss-06-cadastrar-membro.puml).
 
 ## Pré-condições
 - O usuário que realiza o cadastro está registrado no sistema.

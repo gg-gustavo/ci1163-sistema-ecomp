@@ -1,4 +1,4 @@
-# Contrato de Operação 06 — cadastrarAtividade
+# Contrato de Operação 06 - cadastrarAtividade
 
 Autor: Ulisses Curvello Ferreira (GRR20223829)
 
@@ -6,7 +6,7 @@ Autor: Ulisses Curvello Ferreira (GRR20223829)
 `cadastrarAtividade(dadosAtividade)`
 
 ## Referências cruzadas
-ECU004 — Cadastrar atividade; DSS: [dss-04-cadastrar-atividade.puml](../01-dss/dss-04-cadastrar-atividade.puml).
+ECU004 - Cadastrar atividade; DSS: [dss-04-cadastrar-atividade.puml](../01-dss/dss-04-cadastrar-atividade.puml).
 
 ## Pré-condições
 - O usuário está autenticado no sistema.

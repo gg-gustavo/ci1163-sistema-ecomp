@@ -1,9 +1,9 @@
-# CONTRATO DE DESIGN — fonte única de nomes canônicos
+# CONTRATO DE DESIGN - fonte única de nomes canônicos
 
 > TODOS os artefatos (DSS, contratos, diagramas de interação, classes de projeto e código)
 > DEVEM usar exatamente estes nomes. Nada de sinônimos.
 
-## 1. Operações do Sistema (10 — base dos DSS, contratos e diagramas de interação)
+## 1. Operações do Sistema (10 - base dos DSS, contratos e diagramas de interação)
 
 | # | Operação | ECU | Autor dos Contratos (2/integrante) |
 |---|---|---|---|
@@ -26,7 +26,7 @@ Atores: `Direção de Projetos`, `Desenvolvedor`, `Direção de Atividades`, `Ad
 - `Cliente` (nome, email, cpfCnpj, telefone, contato)
 - `Projeto` (cliente [1], dataInicio, prazoEntrega, descricao, contratoPdf; possui Etapas [1..*], Desenvolvedores [1..*], ItensFiscais [0..*])
 - `Etapa` (cronograma, status)
-- `Ecomper` (nome, cpf, email, cargo) — superclasse
+- `Ecomper` (nome, cpf, email, cargo) - superclasse
 - `Desenvolvedor` (papel; é um Ecomper; é desenvolvido por: Projeto)
 - `Atividade` (nome, duracao, local, objetivo, resumo; participada por Participantes [1..*])
 - `Participante` (é um Ecomper; participa de Atividade)

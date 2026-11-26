@@ -1,4 +1,4 @@
-# Contrato de Operação 04 — atualizarCronogramaEtapa
+# Contrato de Operação 04 - atualizarCronogramaEtapa
 
 Autor: Pedro Henrique Gurski (GRR20224759)
 
@@ -6,7 +6,7 @@ Autor: Pedro Henrique Gurski (GRR20224759)
 `atualizarCronogramaEtapa(etapa, cronograma, status)`
 
 ## Referências cruzadas
-ECU002 — Cadastrar etapas do desenvolvimento do Projeto; DSS: [dss-02-cadastrar-etapas.puml](../01-dss/dss-02-cadastrar-etapas.puml).
+ECU002 - Cadastrar etapas do desenvolvimento do Projeto; DSS: [dss-02-cadastrar-etapas.puml](../01-dss/dss-02-cadastrar-etapas.puml).
 
 ## Pré-condições
 - Direção de Projetos está autenticada.

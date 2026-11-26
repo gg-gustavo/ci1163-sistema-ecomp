@@ -1,4 +1,4 @@
-# Contrato de Operação 05 — adicionarDesenvolvedorProjeto
+# Contrato de Operação 05 - adicionarDesenvolvedorProjeto
 
 Autor: Ulisses Curvello Ferreira (GRR20223829)
 
@@ -6,7 +6,7 @@ Autor: Ulisses Curvello Ferreira (GRR20223829)
 `adicionarDesenvolvedorProjeto(projeto, desenvolvedor, papel)`
 
 ## Referências cruzadas
-ECU003 — Cadastrar Desenvolvedor de algum projeto; DSS: [dss-03-adicionar-desenvolvedor.puml](../01-dss/dss-03-adicionar-desenvolvedor.puml).
+ECU003 - Cadastrar Desenvolvedor de algum projeto; DSS: [dss-03-adicionar-desenvolvedor.puml](../01-dss/dss-03-adicionar-desenvolvedor.puml).
 
 ## Pré-condições
 - Direção de Projetos está autenticada.

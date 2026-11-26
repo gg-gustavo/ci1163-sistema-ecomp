@@ -1,4 +1,4 @@
-"""Modelos de domínio do Sistema Ecomp (Fonte única — não renomear).
+"""Modelos de domínio do Sistema Ecomp (Fonte única - não renomear).
 
 Nomes alinhados a docs/PLANO.md e ao diagrama conceitual do enunciado.
 """
