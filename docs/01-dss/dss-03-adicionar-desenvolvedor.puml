@@ -1,0 +1,14 @@
+@startuml
+actor "Direção de Projetos" as Ator
+boundary ":Sistema" as Sistema
+
+Ator -> Sistema: Selecionar projeto
+Sistema --> Ator: Exibir opção de adicionar desenvolvedores
+Ator -> Sistema: adicionarDesenvolvedorProjeto(projeto, desenvolvedor, papel)
+Sistema --> Ator: Exibir mensagem de sucesso
+Sistema --> Ator: Exibir tela inicial do projeto
+
+note over Sistema
+  ECU003: projeto e desenvolvedor existentes; sem desenvolvedor selecionado, informar erro.
+end note
+@enduml

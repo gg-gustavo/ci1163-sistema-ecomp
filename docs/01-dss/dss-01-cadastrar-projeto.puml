@@ -1,0 +1,19 @@
+@startuml
+actor "Direção de Projetos" as Ator
+boundary ":Sistema" as Sistema
+
+Ator -> Sistema: Solicitar cadastro de projeto
+Sistema --> Ator: Exibir tela de cadastro de projeto
+Ator -> Sistema: cadastrarProjeto(dadosProjeto)
+Sistema --> Ator: Exibir tela de upload do contrato
+Ator -> Sistema: importarContrato(projeto, arquivoPdf)
+Sistema --> Ator: Exibir nome do arquivo PDF importado
+Ator -> Sistema: Confirmar cadastro
+Sistema --> Ator: Exibir mensagem de sucesso
+Sistema --> Ator: Exibir tela inicial
+
+note over Sistema
+  ECU001: se faltarem dados obrigatórios, informar o erro e retornar ao cadastro.
+  Sem arquivo importado, exibir confirmação sem contrato.
+end note
+@enduml

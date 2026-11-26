@@ -1,0 +1,13 @@
+@startuml
+actor "Usuário (membro)" as Ator
+boundary ":Sistema" as Sistema
+
+Ator -> Sistema: Solicitar cadastro de membro
+Sistema --> Ator: Exibir formulário de dados pessoais, cargo e diretorias
+Ator -> Sistema: cadastrarMembro(dadosMembro)
+Sistema --> Ator: Exibir mensagem de sucesso
+
+note over Sistema
+  ECU006: campos obrigatórios ausentes ou CPF/RG inválidos geram alerta.
+end note
+@enduml
