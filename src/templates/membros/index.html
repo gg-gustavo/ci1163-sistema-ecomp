@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Membros</h2>
+<p><a class="btn" href="{{ url_for('membros.novo') }}">Novo membro</a></p>
+
+{% if membros %}
+<table>
+  <thead>
+    <tr><th>Nome</th><th>CPF</th><th>Cargo</th><th>Diretoria</th></tr>
+  </thead>
+  <tbody>
+    {% for membro in membros %}
+    <tr>
+      <td>{{ membro.nome }}</td>
+      <td>{{ membro.cpf }}</td>
+      <td>{{ membro.cargo or '—' }}</td>
+      <td>{{ membro.diretoria or '—' }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% else %}
+<p>Nenhum membro cadastrado.</p>
+{% endif %}
+{% endblock %}

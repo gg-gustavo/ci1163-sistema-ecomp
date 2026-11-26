@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Notas e Recibos</h2>
+<p><a class="btn" href="{{ url_for('fiscal.nova') }}">Novo item fiscal</a></p>
+
+{% if itens %}
+<table>
+  <thead>
+    <tr>
+      <th>Projeto</th>
+      <th>Tipo</th>
+      <th>Data</th>
+      <th>Valor (R$)</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for item in itens %}
+    <tr>
+      <td>#{{ item.projeto.id }} — {{ item.projeto.descricao or 'sem descrição' }}</td>
+      <td>{{ 'Nota' if item.tipo == 'nota' else 'Recibo' }}</td>
+      <td>{{ item.data.strftime('%d/%m/%Y') if item.data else '—' }}</td>
+      <td>{{ '%.2f'|format(item.valor or 0) }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+  <tfoot>
+    <tr><th colspan="3">Total</th><th>{{ '%.2f'|format(total) }}</th></tr>
+  </tfoot>
+</table>
+{% else %}
+<p>Nenhum item fiscal cadastrado.</p>
+{% endif %}
+{% endblock %}

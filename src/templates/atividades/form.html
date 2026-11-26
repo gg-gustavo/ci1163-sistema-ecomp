@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Nova atividade</h2>
+
+<form method="post" action="{{ url_for('atividades.nova') }}">
+  <label for="nome">Nome *</label>
+  <input id="nome" name="nome" value="{{ dados.nome or '' }}" required>
+
+  <label for="duracao">Duração *</label>
+  <input id="duracao" name="duracao" value="{{ dados.duracao or '' }}" required>
+
+  <label for="local">Local *</label>
+  <input id="local" name="local" value="{{ dados.local or '' }}" required>
+
+  <label for="objetivo">Objetivo *</label>
+  <textarea id="objetivo" name="objetivo" rows="3" required>{{ dados.objetivo or '' }}</textarea>
+
+  <label for="resumo">Resumo *</label>
+  <textarea id="resumo" name="resumo" rows="3" required>{{ dados.resumo or '' }}</textarea>
+
+  <label for="participantes">Participantes (somente membros cadastrados)</label>
+  <select id="participantes" name="participantes" multiple size="6">
+    {% for membro in membros %}
+    <option value="{{ membro.id }}" {% if membro.id|string in participantes_ids %}selected{% endif %}>
+      {{ membro.nome }}{% if membro.cargo %} — {{ membro.cargo }}{% endif %}
+    </option>
+    {% endfor %}
+  </select>
+  {% if not membros %}<p>Nenhum membro cadastrado. <a href="{{ url_for('membros.novo') }}">Cadastre um membro</a>.</p>{% endif %}
+
+  <p><button class="btn" type="submit">Cadastrar</button>
+     <a class="btn" href="{{ url_for('atividades.index') }}">Cancelar</a></p>
+</form>
+{% endblock %}

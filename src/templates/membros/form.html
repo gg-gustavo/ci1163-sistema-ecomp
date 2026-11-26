@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Novo membro</h2>
+
+<form method="post" action="{{ url_for('membros.novo') }}">
+  <label for="nome">Nome *</label>
+  <input id="nome" name="nome" value="{{ dados.nome or '' }}" required>
+
+  <label for="cpf">CPF *</label>
+  <input id="cpf" name="cpf" value="{{ dados.cpf or '' }}" placeholder="000.000.000-00" required>
+
+  <label for="email">E-mail *</label>
+  <input id="email" name="email" type="email" value="{{ dados.email or '' }}" required>
+
+  <label for="cargo">Cargo *</label>
+  <input id="cargo" name="cargo" value="{{ dados.cargo or '' }}" required>
+
+  <label for="diretoria">Diretoria *</label>
+  <input id="diretoria" name="diretoria" value="{{ dados.diretoria or '' }}" required>
+
+  <p><button class="btn" type="submit">Cadastrar</button>
+     <a class="btn" href="{{ url_for('membros.index') }}">Cancelar</a></p>
+</form>
+{% endblock %}
