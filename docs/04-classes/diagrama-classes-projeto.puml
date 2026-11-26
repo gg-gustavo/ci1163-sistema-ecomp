@@ -1,0 +1,154 @@
+@startuml
+title Diagrama de Classes — Visão de Projeto
+left to right direction
+skinparam packageStyle rectangle
+skinparam classAttributeIconSize 0
+skinparam linetype ortho
+
+package "UI" as UI {
+  class ProjetosUI <<boundary>>
+  class AtividadesUI <<boundary>>
+  class FiscalUI <<boundary>>
+  class MembrosUI <<boundary>>
+  class RelatoriosUI <<boundary>>
+}
+
+package "Controle" as Controle {
+  class ProjetosController {
+    +cadastrarProjeto(dadosProjeto)
+    +importarContrato(projeto, arquivoPdf)
+    +cadastrarEtapasProjeto(projeto, etapas)
+    +atualizarCronogramaEtapa(etapa, cronograma, status)
+    +adicionarDesenvolvedorProjeto(projeto, desenvolvedor, papel)
+  }
+  class AtividadesController {
+    +cadastrarAtividade(dadosAtividade)
+    +registrarHorasAtividade(atividade, membro, horas)
+  }
+  class FiscalController {
+    +cadastrarItemFiscal(projeto, tipo, data, valor)
+  }
+  class MembrosController {
+    +cadastrarMembro(dadosMembro)
+  }
+  class RelatoriosController {
+    +gerarRelatorio(tipo, filtros)
+  }
+}
+
+package "Domínio" as Dominio {
+    class Cliente <<entity>> {
+      id: Integer
+      nome: String(120)
+      email: String(120)
+      cpf_cnpj: String(20)
+      telefone: String(20)
+      contato: String(120)
+    }
+    class Projeto <<entity>> {
+      id: Integer
+      cliente_id: Integer
+      data_inicio: Date
+      prazo_entrega: Date
+      descricao: Text
+      contrato_pdf: String(255)
+    }
+    class Etapa <<entity>> {
+      id: Integer
+      projeto_id: Integer
+      cronograma: String(255)
+      status: String(30)
+    }
+    class Desenvolvedor <<entity>> {
+      id: Integer
+      membro_id: Integer
+      projeto_id: Integer
+      papel: String(60)
+    }
+    class ItemFiscal <<entity>> {
+      id: Integer
+      projeto_id: Integer
+      tipo: String(10)
+      data: Date
+      valor: Float
+    }
+    class Membro <<entity>> {
+      id: Integer
+      nome: String(120)
+      cpf: String(14)
+      email: String(120)
+      cargo: String(60)
+      diretoria: String(60)
+    }
+    class Atividade <<entity>> {
+      id: Integer
+      nome: String(120)
+      duracao: String(60)
+      local: String(120)
+      objetivo: Text
+      resumo: Text
+    }
+    class Participante <<entity>> {
+      id: Integer
+      atividade_id: Integer
+      membro_id: Integer
+    }
+    class RegistroHoras <<entity>> {
+      id: Integer
+      atividade_id: Integer
+      membro_id: Integer
+      horas: Float
+      registrado_em: DateTime
+    }
+    class Relatorio <<entity>> {
+      id: Integer
+      tipo: String(20)
+      filtros_json: Text
+      gerado_em: DateTime
+      caminho_pdf: String(255)
+    }
+}
+
+package "Persistência" as Persistencia {
+  class Repositorio <<db.session>> {
+    +buscarCliente(id)
+    +buscarProjeto(id)
+    +buscarEtapa(id)
+    +buscarMembro(id)
+    +buscarAtividade(id)
+    +consultarDados(tipo, filtros)
+    +salvar(objeto)
+  }
+}
+
+Controle -[hidden]right- Persistencia
+Persistencia -[hidden]down- Dominio
+
+ProjetosUI ..> ProjetosController
+AtividadesUI ..> AtividadesController
+FiscalUI ..> FiscalController
+MembrosUI ..> MembrosController
+RelatoriosUI ..> RelatoriosController
+
+Controle ..> Dominio
+
+Controle ..> Persistencia
+
+Cliente "1" -- "0..*" Projeto : cliente / projetos
+Projeto "1" *-- "1..*" Etapa : etapas
+Projeto "1" *-- "0..*" ItemFiscal : itens_fiscais
+Projeto "1" -- "1..*" Desenvolvedor : desenvolvedores
+Membro "1" -- "0..*" Desenvolvedor : desenvolvimentos
+Atividade "1" *-- "1..*" Participante : participantes
+Membro "1" -- "0..*" Participante : participacoes
+Atividade "1" -- "0..*" RegistroHoras : registros_horas
+Membro "1" -- "0..*" RegistroHoras : registros_horas
+
+note bottom of Repositorio
+  Persistência via Flask-SQLAlchemy / db.session.
+end note
+note bottom of Dominio
+  Ecomp não é classe de projeto:
+  a facade é o app Flask.
+end note
+@enduml
